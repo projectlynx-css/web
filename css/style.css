@@ -151,7 +151,7 @@ ul { list-style: none; }
 .btn-sm { padding: 0.4rem 0.9rem; font-size: 0.8rem; }
 
 /* Hamburger */
-.nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; z-index: 1001; }
+.nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; z-index: 1001; background: transparent; border: none; }
 .nav-toggle span { width: 24px; height: 2px; background: var(--primary); border-radius: 2px; transition: var(--transition); display: block; box-shadow: 0 0 6px rgba(0, 212, 255, 0.4); }
 .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
 .nav-toggle.active span:nth-child(2) { opacity: 0; }
@@ -1029,6 +1029,7 @@ ul { list-style: none; }
   .countdown-item { padding: 0.5rem 0.3rem; }
   .about-icon-grid { grid-template-columns: 1fr; }
   .vm-card { padding: 1.5rem; }
+  .contact-form { padding: 1.5rem; }
 }
 
 /* ===== MISC ===== */

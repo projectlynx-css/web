@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Project Lynx</title>
+  <meta name="description" content="Real-world projects built by Project Lynx members at Al-Kawthar University." />
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    .projects-filter {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .filter-btn {
+      padding: 0.45rem 1.1rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--subtext);
+      transition: var(--transition);
+      font-family: var(--font-main);
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: rgba(0,212,255,0.1);
+      border-color: rgba(0,212,255,0.35);
+      color: var(--primary);
+    }
+    .project-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      margin-bottom: 0.75rem;
+    }
+    .status-active { background: rgba(0,255,200,0.1); color: var(--accent); border: 1px solid rgba(0,255,200,0.25); }
+    .status-dev { background: rgba(123,97,255,0.1); color: #a89dff; border: 1px solid rgba(123,97,255,0.25); }
+    .status-planning { background: rgba(0,212,255,0.1); color: var(--primary); border: 1px solid rgba(0,212,255,0.25); }
+    .project-card-full {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card-full:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 60px rgba(0,212,255,0.1);
+    }
+    .project-card-full .project-body { flex: 1; display: flex; flex-direction: column; }
+    .project-card-full .project-body .project-footer { margin-top: auto; padding-top: 1rem; display: flex; gap: 0.75rem; }
+  </style>
+</head>
+<body>
+<canvas id="particles-canvas"></canvas>
+<nav class="navbar" role="navigation">
+  <a href="index.html" class="nav-logo">
+      <div class="logo-icon"><img src="logo.png" alt="LYNX"></div>
+    <span class="logo-text">Project Lynx</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="projects.html" class="active">Projects</a>
+    <a href="team.html">Our Team</a>
+    <a href="hall-of-fame.html">Hall of Fame</a>
+    <a href="newsletter.html" >Newsletter</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-cta"><a href="contact.html" class="btn btn-primary">Join Community</a></div>
+  <button class="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="timeline.html">Timeline</a>
+  <a href="projects.html">Projects</a>
+  <a href="team.html">Our Team</a>
+  <a href="hall-of-fame.html">Hall of Fame</a>
+  <a href="newsletter.html">Newsletter</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn btn-primary" style="margin-top:1rem;">Join Community</a>
+</div>
+
+<div class="page-hero">
+  <div class="section-label" style="justify-content:center;">What We Build</div>
+  <h1 class="section-title" style="font-size:clamp(2.5rem,6vw,4rem);">Our <span class="gradient-text">Projects</span></h1>
+  <p class="section-desc" style="margin:1rem auto 0;max-width:550px;">Real solutions engineered by real students — built to solve problems that matter at university and beyond.</p>
+</div>
+
+<!-- <section class="section">
+  <div class="section-inner">
+
+    <div class="projects-filter">
+      <button class="filter-btn active">All Projects</button>
+      <button class="filter-btn">AI & ML</button>
+      <button class="filter-btn">Cybersecurity</button>
+      <button class="filter-btn">Web Dev</button>
+      <button class="filter-btn">Data Science</button>
+    </div>
+
+    <div class="projects-grid stagger-parent">
+
+      <div class="project-card-full stagger-child reveal">
+        <div class="project-thumb" style="height:220px;font-size:5rem;">🎯</div>
+        <div class="project-body" style="padding:2rem;">
+          <div class="project-status status-active">● Active</div>
+          <h3 style="font-family:var(--font-display);font-size:1.25rem;font-weight:800;margin-bottom:0.6rem;">Smart Attendance System</h3>
+          <p style="font-size:0.875rem;color:var(--subtext);line-height:1.75;margin-bottom:1.2rem;">An intelligent face recognition-powered attendance platform that automates check-ins across university departments. Supports real-time reporting, attendance analytics, and integration with the university's existing systems.</p>
+          <div class="project-stack" style="margin-bottom:0;">
+            <span class="stack-badge py">Python</span>
+            <span class="stack-badge py">OpenCV</span>
+            <span class="stack-badge ac">TensorFlow</span>
+            <span class="stack-badge js">Flask</span>
+            <span class="stack-badge ac">SQLite</span>
+          </div>
+          <div class="project-footer">
+            <a href="#" class="btn btn-secondary btn-sm">💻 GitHub</a>
+            <a href="#" class="btn btn-outline btn-sm">Live Demo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card-full stagger-child reveal">
+        <div class="project-thumb" style="height:220px;font-size:5rem;">🏛️</div>
+        <div class="project-body" style="padding:2rem;">
+          <div class="project-status status-dev">⚙ In Development</div>
+          <h3 style="font-family:var(--font-display);font-size:1.25rem;font-weight:800;margin-bottom:0.6rem;">University Portal</h3>
+          <p style="font-size:0.875rem;color:var(--subtext);line-height:1.75;margin-bottom:1.2rem;">A centralized academic management system providing students and faculty with grades, timetables, announcements, course resources, and administrative tools — all in one unified, modern interface.</p>
+          <div class="project-stack" style="margin-bottom:0;">
+            <span class="stack-badge js">React</span>
+            <span class="stack-badge js">Node.js</span>
+            <span class="stack-badge ac">MongoDB</span>
+            <span class="stack-badge js">Express</span>
+          </div>
+          <div class="project-footer">
+            <a href="#" class="btn btn-secondary btn-sm">💻 GitHub</a>
+            <a href="#" class="btn btn-outline btn-sm">Figma</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card-full stagger-child reveal">
+        <div class="project-thumb" style="height:220px;font-size:5rem;">🚩</div>
+        <div class="project-body" style="padding:2rem;">
+          <div class="project-status status-active">● Active</div>
+          <h3 style="font-family:var(--font-display);font-size:1.25rem;font-weight:800;margin-bottom:0.6rem;">Lynx CTF Platform</h3>
+          <p style="font-size:0.875rem;color:var(--subtext);line-height:1.75;margin-bottom:1.2rem;">An internal cybersecurity training and competition platform supporting challenge categories including web exploitation, cryptography, forensics, binary exploitation, and OSINT. Powers the annual CTF-451 competition.</p>
+          <div class="project-stack" style="margin-bottom:0;">
+            <span class="stack-badge py">Python</span>
+            <span class="stack-badge py">Django</span>
+            <span class="stack-badge js">Docker</span>
+            <span class="stack-badge ac">PostgreSQL</span>
+            <span class="stack-badge js">Nginx</span>
+          </div>
+          <div class="project-footer">
+            <a href="#" class="btn btn-secondary btn-sm">💻 GitHub</a>
+            <a href="#" class="btn btn-outline btn-sm">Writeups</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card-full stagger-child reveal">
+        <div class="project-thumb" style="height:220px;font-size:5rem;">🧠</div>
+        <div class="project-body" style="padding:2rem;">
+          <div class="project-status status-dev">⚙ In Development</div>
+          <h3 style="font-family:var(--font-display);font-size:1.25rem;font-weight:800;margin-bottom:0.6rem;">AI Study Assistant</h3>
+          <p style="font-size:0.875rem;color:var(--subtext);line-height:1.75;margin-bottom:1.2rem;">An LLM-powered academic productivity tool designed for university students. Summarizes research papers, answers subject-specific questions, generates study plans, and helps organize complex information for exam prep.</p>
+          <div class="project-stack" style="margin-bottom:0;">
+            <span class="stack-badge ac">LLM API</span>
+            <span class="stack-badge js">Next.js</span>
+            <span class="stack-badge py">Python</span>
+            <span class="stack-badge js">TypeScript</span>
+          </div>
+          <div class="project-footer">
+            <a href="#" class="btn btn-secondary btn-sm">💻 GitHub</a>
+            <a href="#" class="btn btn-outline btn-sm">Try Beta</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card-full stagger-child reveal">
+        <div class="project-thumb" style="height:220px;font-size:5rem;">📊</div>
+        <div class="project-body" style="padding:2rem;">
+          <div class="project-status status-planning">◎ Planning</div>
+          <h3 style="font-family:var(--font-display);font-size:1.25rem;font-weight:800;margin-bottom:0.6rem;">Campus Analytics Dashboard</h3>
+          <p style="font-size:0.875rem;color:var(--subtext);line-height:1.75;margin-bottom:1.2rem;">A data visualization platform to help university administration track student performance trends, event attendance, and resource utilization across departments using interactive charts and real-time data feeds.</p>
+          <div class="project-stack" style="margin-bottom:0;">
+            <span class="stack-badge py">Python</span>
+            <span class="stack-badge ac">Pandas</span>
+            <span class="stack-badge js">D3.js</span>
+            <span class="stack-badge ac">FastAPI</span>
+          </div>
+          <div class="project-footer">
+            <a href="#" class="btn btn-secondary btn-sm">💻 GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card-full stagger-child reveal">
+        <div class="project-thumb" style="height:220px;font-size:5rem;">🌐</div>
+        <div class="project-body" style="padding:2rem;">
+          <div class="project-status status-active">● Active</div>
+          <h3 style="font-family:var(--font-display);font-size:1.25rem;font-weight:800;margin-bottom:0.6rem;">Project Lynx Website</h3>
+          <p style="font-size:0.875rem;color:var(--subtext);line-height:1.75;margin-bottom:1.2rem;">The official Project Lynx society website — the very site you're browsing now. Built with vanilla HTML, CSS, and JavaScript with a focus on performance, design, and accessibility. Open source and community maintained.</p>
+          <div class="project-stack" style="margin-bottom:0;">
+            <span class="stack-badge js">HTML5</span>
+            <span class="stack-badge py">CSS3</span>
+            <span class="stack-badge ac">JavaScript</span>
+          </div>
+          <div class="project-footer">
+            <a href="#" class="btn btn-secondary btn-sm">💻 GitHub</a>
+            <a href="contact.html" class="btn btn-outline btn-sm">Contribute</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Submit Project CTA -->
+    <div style="margin-top:4rem;padding:3rem;background:linear-gradient(135deg,rgba(0,212,255,0.06),rgba(123,97,255,0.06));border:1px solid rgba(0,212,255,0.15);border-radius:var(--radius-lg);text-align:center;max-width:700px;margin-left:auto;margin-right:auto;" class="reveal">
+      <div style="font-size:2.5rem;margin-bottom:1rem;">💡</div>
+      <h3 style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;margin-bottom:0.75rem;">Have a Project Idea?</h3>
+      <p style="color:var(--subtext);margin-bottom:1.5rem;max-width:450px;margin-left:auto;margin-right:auto;">Got a concept that could solve a real problem? Pitch your idea to the Project Lynx team and we'll help you build it.</p>
+      <a href="contact.html" class="btn btn-primary">Submit Your Idea →</a>
+    </div>
+
+  </div>
+</section>
+<br>
+
+<footer class="footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="margin-bottom:0.5rem;">
+            <div class="logo-icon"><img src="logo.png" alt="LYNX"></div>
+            <span class="logo-text">Project Lynx</span>
+          </a>
+          <p>Official Computer Science Society of Al-Kawthar University — building the next generation of tech leaders.
+          </p>
+          <div class="social-links" aria-label="Social media links">
+            <a href="https://instagram.com/projectlynx.css" class="social-link" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://github.com/projectlynx-css" class="social-link" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://youtube.com/@projectlynx.css" class="social-link" aria-label="YouTube">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://x.com/projectlynx.css" class="social-link" aria-label="X / Twitter">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="timeline.html">Timeline</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="hall-of-fame.html">Hall of Fame</a></li>
+            <li><a href="newsletter.html">Newsletter</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get In Touch</h4>
+          <ul>
+            <li><a href="mailto:projectlynx.css@gmail.com">projectlynx.css@gmail.com</a></li>
+            <li><a href="contact.html">Join Community</a></li>
+            <li><a href="contact.html">Submit a Project</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Project Lynx · All rights reserved</p>
+        <p>Powered by <strong>Al-Kawthar University</strong></p>
+      </div>
+    </div>
+  </footer>
+<script src="js/script.js"></script>
+<script>
+  // Filter buttons
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

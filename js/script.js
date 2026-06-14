@@ -265,7 +265,7 @@ document.querySelectorAll('.stagger-parent').forEach(parent => {
   });
 });
 
-<script>
+// TIMER
   // Set event date and time: June 16, 2026 11:00 AM
   const eventDate = new Date("June 16, 2026 11:00:00").getTime();
 
@@ -316,4 +316,3 @@ document.querySelectorAll('.stagger-parent').forEach(parent => {
 
   // Update every second
   setInterval(updateCountdown, 1000);
-</script>

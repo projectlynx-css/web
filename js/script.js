@@ -79,31 +79,8 @@ const counterObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
 
 // ===== COUNTDOWN TIMER =====
-function updateCountdown() {
-  const eventDate = new Date('2026-03-15T09:00:00').getTime();
-  const now = new Date().getTime();
-  const diff = eventDate - now;
-
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-  const pad = n => String(n).padStart(2, '0');
-
-  const dEl = document.getElementById('cd-days');
-  const hEl = document.getElementById('cd-hours');
-  const mEl = document.getElementById('cd-mins');
-  const sEl = document.getElementById('cd-secs');
-
-  if (dEl) dEl.textContent = pad(Math.max(0, days));
-  if (hEl) hEl.textContent = pad(Math.max(0, hours));
-  if (mEl) mEl.textContent = pad(Math.max(0, minutes));
-  if (sEl) sEl.textContent = pad(Math.max(0, seconds));
-}
-
-updateCountdown();
-setInterval(updateCountdown, 1000);
+// Countdown is handled inline in index.html using the data-event attribute
+// to avoid duplicate intervals fighting over the same DOM elements.
 
 // ===== PARTICLES =====
 const canvas = document.getElementById('particles-canvas');
